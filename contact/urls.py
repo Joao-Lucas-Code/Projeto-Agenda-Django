@@ -1,4 +1,5 @@
 from django.urls import path
+
 from contact import views
 
 app_name = 'contact'
@@ -9,4 +10,5 @@ urlpatterns = [
 
     # Contact (Crud)
     path('contact/<int:contact_id>/', views.contact, name='contact'),
+    path('contact/create/', views.create, name='create'),
 ]
