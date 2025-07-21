@@ -1,4 +1,5 @@
 from django import forms
+from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
 from contact import models
 
@@ -49,3 +50,6 @@ class ContactForm(forms.ModelForm):
                 )
             )
         return first_name
+
+class RegisterForm(UserCreationForm):
+    ...
