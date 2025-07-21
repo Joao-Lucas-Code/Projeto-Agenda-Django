@@ -20,7 +20,7 @@ def create(request):
 
         if form.is_valid():
             contact = form.save()
-            return redirect('contact:update', contact_id=contact.pk)
+            return redirect('contact:create')
 
         return render(
             request,
