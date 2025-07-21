@@ -28,6 +28,9 @@ class ContactForm(forms.ModelForm):
             'first_name',
             'last_name',
             'phone',
+            'email',
+            'description',
+            'category',
         ]
         # widgets = {
         #     'first_name': forms.TextInput(
@@ -50,7 +53,7 @@ class ContactForm(forms.ModelForm):
                 )
             self.add_error('first_name', msg)
             self.add_error('last_name', msg)
-            
+
         return super().clean()
     
     def clean_first_name(self):
