@@ -1,14 +1,42 @@
 from django import forms
 from django.core.exceptions import ValidationError
-from contact.forms import ContactForm
 from contact import models
 
 class ContactForm(forms.ModelForm):
+    first_name = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                'class': 'classe a classe b',
+                'placeholder': 'Aqui veio o init',
+            }
+        ),
+        label='Primeiro Nome',
+        help_text='Digite o primeiro nome',
+    )
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        # self.fields['first_name'].widget.attrs.update({
+        #     'class': 'classe-a classe-b',
+        #     'placeholder': 'Aqui veio do init',
+        # })
+
     class Meta:
         model = models.Contact
-        fields = (
-            'first_name', 'last_name', 'phone',
-        )
+        fields = [
+            'first_name',
+            'last_name',
+            'phone',
+        ]
+        # widgets = {
+        #     'first_name': forms.TextInput(
+        #         attrs={
+        #             'class': 'classe-a classe-b',
+        #             'placeholder': 'Escreva aqui',
+        #         }
+        #     )
+        # }
 
     def clean(self):
         cleaned_data = self.cleaned_data
